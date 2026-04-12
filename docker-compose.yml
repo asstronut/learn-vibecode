@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:17
+    container_name: learn-vibecode-db
+    environment:
+      POSTGRES_USER: vibecode_user
+      POSTGRES_PASSWORD: vibecode_password
+      POSTGRES_DB: vibecode_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
