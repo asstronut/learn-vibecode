@@ -11,5 +11,5 @@
     "moduleDetection": "force",
     "types": ["bun-types"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "scratch/**/*"]
 }

@@ -59,4 +59,28 @@ export const userRoutes = new Elysia({ prefix: "/api/users" }).post(
       password: t.String(),
     }),
   }
-);
+)
+.get("/current", async ({ headers, set }) => {
+  const authHeader = headers["authorization"];
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    set.status = 401;
+    return {
+      error: "Unauthorized: Missing or invalid token format",
+    };
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const user = await UserService.getCurrentUser(token);
+    return {
+      user,
+    };
+  } catch (error: any) {
+    set.status = 401;
+    return {
+      error: error.message,
+    };
+  }
+});
