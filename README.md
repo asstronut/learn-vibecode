@@ -2,7 +2,7 @@
 
 A high-performance backend API built with the modern TypeScript stack.
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Runtime**: [Bun](https://bun.sh/)
 - **Web Framework**: [ElysiaJS](https://elysiajs.com/)
@@ -10,7 +10,7 @@ A high-performance backend API built with the modern TypeScript stack.
 - **Database**: PostgreSQL (via Docker)
 - **Hashing**: Bun.password (bcrypt)
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -55,7 +55,7 @@ A high-performance backend API built with the modern TypeScript stack.
 
 The API will be available at `http://localhost:3000`.
 
-## 📍 API Endpoints
+## API Endpoints
 
 ### Users
 - `POST /api/users`: Register a new user.
