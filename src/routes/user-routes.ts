@@ -83,4 +83,35 @@ export const userRoutes = new Elysia({ prefix: "/api/users" }).post(
       error: error.message,
     };
   }
+})
+.post("/logout", async ({ headers, set }) => {
+  const authHeader = headers["authorization"];
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    set.status = 401;
+    return {
+      message: "User not found",
+    };
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  try {
+    await UserService.logout(token);
+    return {
+      message: "User logged out successfully",
+    };
+  } catch (error: any) {
+    if (error.message === "User not found") {
+      set.status = 404;
+      return {
+        message: "User not found",
+      };
+    }
+
+    set.status = 500;
+    return {
+      message: "Internal server error",
+    };
+  }
 });

@@ -93,4 +93,15 @@ export class UserService {
 
     return result;
   }
+
+  static async logout(token: string) {
+    const [deletedSession] = await db
+      .delete(sessions)
+      .where(eq(sessions.token, token))
+      .returning();
+
+    if (!deletedSession) {
+      throw new Error("User not found");
+    }
+  }
 }
